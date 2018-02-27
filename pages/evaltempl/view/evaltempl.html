@@ -1,0 +1,95 @@
+<div class="mainBody evalltempl" ng-controller="evalTempl">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">考评管理</a>
+	  <a><cite>考评模板</cite></a>
+	</span>
+	<div class="contain">
+		<blockquote class="layui-elem-quote">找到<span>18</span>条记录<button ng-click="addtempl()" class="layui-btn addnew">新增模板</button></blockquote>
+		<hr />
+		<table class="layui-table" lay-skin="line" id="table">
+			<tr ng-show="titleShow">
+				<td style="width: 80px;">
+					<input type="checkbox" name="" id="" value="" ng-model="all" ng-change="allChk()" /> 全选
+				</td>
+				<td style="width: 120px;">模板编号</td>
+				<td>模板名称</td>
+				<td>备注</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+			<tr ng-show="!titleShow">
+				<td style="width: 80px;">
+					<input type="checkbox" name="" id="" value="" ng-model="all" ng-change="allChk()" /> 全选
+				</td>
+				<td style="" colspan="3">
+					<button class="layui-btn btn tools">启用</button>
+					<button class="layui-btn layui-btn-warm tools">禁用</button>
+					<button class="layui-btn layui-btn-danger tools">删除</button>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr ng-repeat="x in data.data track by $index">
+				<td>
+					<input type="checkbox" name="" id="" value="" ng-model="x.chk" ng-change="itemChk(x.chk)" />
+				</td>
+				<td>{{x.id}}</td>
+				<td>{{x.classify}}</td>
+				<td>{{x.wealth}}</td>
+				<td>{{x.state?'启用':'禁用'}}</td>
+				<td>
+					<a href="javascript:;" ng-click="preview(x)">预览</a>
+					<a href="javascript:;" ng-click="edit(x)">编辑</a>
+					<a href="javascript:;" ng-click="templcopy(x)">复制</a>
+					<!--<a href="javascript:;" ng-click="del(x)">删除</a>-->
+				</td>
+			</tr>
+		</table>
+		<div id="pagination"></div>
+	</div>
+	<script type="text/html" id="toolbar">
+		<a class="layui-btn layui-btn-mini" lay-event="detail">查看</a>
+		<a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+
+		<!-- 这里同样支持 laytpl 语法，如： -->
+		<!--{{#  if(d.auth > 2){ }}
+    <a class="layui-btn layui-btn-mini" lay-event="check">审核</a>
+  {{#  } }}-->
+	</script>
+	<script type="text/ng-template" id="evalTempl.html">
+		<div class="modal-header">
+			<h3 class="modal-title">考评模板编辑</h3>
+		</div>
+		<div class="modal-body evalltemplModal">
+			<div class="item">
+				<span class="name">模板名称：</span><input type="text" class="titleIpt" ng-model="items.content.title" />
+			</div>
+			<div class="item">
+				<span class="name">模板编号：</span><input type="text" class="titleIpt" ng-model="items.content.code" />
+			</div>
+			<div class="item">
+				<span class="name">备注：</span><input type="text" class="titleIpt" ng-model="items.content.beizhu" />
+			</div>
+			<div ng-repeat="x in items.content.leimu track by $index" ng-init="upindex=$index">
+				<div class="item">
+					<span class="name">考评类目{{$index+1}}：</span><input type="text" class="titleIpt" ng-model="x.name" /> <button class="add" ng-click="leimuAdd()">+</button> <button class="rm" ng-click="leimuRm($index)" ng-if="$index!=0">-</button>
+				</div>
+				<div class="item" ng-repeat="y in x.items track by $index">
+					<span class="name">考评项{{$index+1}}：</span><input type="text" ng-model="y" /> <button class="add" ng-click="leimuItemAdd(upindex)">+</button> <button class="rm" ng-click="leimuItemRm(upindex,$index)" ng-if="$index!=0">-</button>
+				</div>
+			</div>
+			<div ng-repeat="x in items.content.suggestion track by $index">
+				<div class="item">
+					<span class="name">考评建议{{$index+1}}：</span><input type="text" class="titleIpt" ng-model="x" /> <button class="add" ng-click="suggestionAdd()">+</button> <button class="rm" ng-click="suggestionRm($index)" ng-if="$index!=0">-</button>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-click="ok()">  
+        确认  
+        </button>
+			<button class="btn btn-warning" ng-click="cancel()">退出</button>
+		</div>
+	</script>

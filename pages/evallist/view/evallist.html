@@ -1,0 +1,94 @@
+<div class="mainBody evallist" ng-controller="joinCtrl">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">考评管理</a>
+	  <a><cite>考评列表</cite></a>
+	</span>
+	<div class="contain">
+		<blockquote class="layui-elem-quote">考评列表</blockquote>
+		<hr />
+		<form class="layui-form">
+			<!--<div class="layui-form-item">-->
+			<label class="layui-form-label">班级：</label>
+			<div class="layui-input-block">
+				<select name="type" lay-verify="required">
+					<option value="">--请选择班级类型--</option>
+					<option value="0">java</option>
+					<option value="1">fed</option>
+					<option value="2">fullstack</option>
+					<option value="3">uid</option>
+					<option value="4">other</option>
+				</select>
+			</div>
+			<!--</div>-->
+			<!--<div class="layui-form-item">-->
+			<label class="layui-form-label">教员：</label>
+			<div class="layui-input-block">
+				<select name="class" lay-verify="required">
+					<option value="">--请选择教员--</option>
+					<option value="0">java</option>
+					<option value="1">fed</option>
+					<option value="2">fullstack</option>
+				</select>
+			</div>
+			<!--</div>-->
+			<!--<div class="layui-form-item">-->
+			<label class="layui-form-label">考评模板：</label>
+			<div class="layui-input-block">
+				<select name="city" lay-verify="required">
+					<option value="">--请选择班级类型--</option>
+					<option value="0">java</option>
+					<option value="1">fed</option>
+					<option value="2">fullstack</option>
+					<option value="3">uid</option>
+					<option value="4">other</option>
+				</select>
+			</div>
+			<!--</div>-->
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="formDemo">增加调查</button>
+			</div>
+		</form>
+		<table class="layui-table" lay-skin="line">
+			<tr>
+				<td>序号</td>
+				<td>班级名</td>
+				<td>班级类型</td>
+				<td>调查教员名</td>
+				<td>参与调查人数</td>
+				<td>已提交调查人数</td>
+				<td>调查日期</td>
+				<td>调查班级IP段</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>JSD1707</td>
+				<td>[JSDxxx]大学生实训班</td>
+				<td>叶加飞</td>
+				<td>0</td>
+				<td>0</td>
+				<td>2017-11-22 21:30</td>
+				<td>192.168.0</td>
+				<td>
+					<a href="javascript:;">结束调查</a>
+					<a href="javascript:;">删除调查</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>JSD1707</td>
+				<td>[JSDxxx]大学生实训班</td>
+				<td>叶加飞</td>
+				<td>0</td>
+				<td>0</td>
+				<td>2017-11-22 21:30</td>
+				<td>192.168.0</td>
+				<td>
+					<a href="javascript:;">结束调查</a>
+					<a href="javascript:;">删除调查</a>
+				</td>
+			</tr>
+		</table>
+		<div id="pagination"></div>
+	</div>
+</div>

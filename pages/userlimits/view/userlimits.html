@@ -1,0 +1,45 @@
+<div class="mainBody userlimitsbody" ng-controller="userlimits">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">用户管理</a>
+	  <a><cite>角色权限</cite></a>
+	</span>
+<div class="contain">
+	<blockquote class="layui-elem-quote">找到<span>{{data.length}}</span>条记录
+	</blockquote>
+	<hr />
+	<table class="layui-table" lay-skin="line" id="table">
+		<tr>
+			<td>
+				<input type="checkbox" name="" id="" value="" ng-model='all' ng-change='allChk()' /> 全选
+			</td>
+			<td>编号</td>
+			<td>角色名</td>
+			<td>备注</td>
+			<td>操作</td>
+		</tr>
+		<tr ng-repeat="x in data track by $index">
+			<td>
+				<input type="checkbox" name="" id="" userid="{{x.id}}" ng-model='x.chk' />
+			</td>
+			<td>{{x.id}}</td>
+			<td>{{x.name}}</td>
+			<td>{{x.beizhu}}</td>
+			<td>
+				<a href="javascript:;" ng-click="layer_limitsmod(x)">设置权限</a>
+			</td>
+		</tr>
+	</table>
+	<!--<ul>
+			<li ng-repeat="x in alllimits">
+				<div><input type="checkbox" />{{x.title}}</div>
+				<div ng-repeat="y in x.items track by $index">
+					<input type="checkbox" /> {{y}}
+				</div>
+			</li>
+		</ul>-->
+	<div class="tool">
+		<button class="layui-btn new" ng-click="layer_roleadd()">新增角色</button>
+		<button class="layui-btn layui-btn-danger">删除已选</button>
+	</div>
+	<div id="pagination"></div>
+	</div>

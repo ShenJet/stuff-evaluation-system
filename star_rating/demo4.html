@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <title>rater demo</title>
+        <meta charset="utf-8"/>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="bower_components/bootstrap-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>rater demo</h1>
+        <hr>
+        <input class="my-star-rater" data-key="ary1" type="number"/>
+        <input class="my-star-rater" data-key="ary2" type="number"/>
+        <input class="my-star-rater" data-key="ary3" type="number"/>
+
+        <script type="text/javascript">
+
+            var dataSet = {};
+            dataSet['ary1'] = ["内容aaa1","内容aaa2","内容aaa3","内容aaa4","内容aaa5"];
+            dataSet['ary2'] = ["内容bbb1","内容bbb2","内容bbb3","内容bbb4","内容bbb5"];
+            dataSet['ary3'] = ["内容ccc1","内容ccc2","内容ccc3","内容ccc4","内容ccc5"];
+
+            $(function(){
+                $(".my-star-rater").rating({
+                    "step":1.0,
+                    "size":"sm",
+                    showClear: false,
+                    showCaption: false
+                }).on('rating.hover', function(event, val, caption) {
+//                    console.log("hover...");
+                    appendCaption($(event.currentTarget), val);
+                }).on('rating.change', function(event, value, caption) {
+//                    console.log("change");
+                    $(event.currentTarget).attr("currVal", value);
+                }).on('rating.hoverleave', function(event, target) {
+//                    console.log("hoverleave");
+                    var $starInput = $(event.currentTarget);
+                    var val = $starInput.attr("currVal");
+                    appendCaption($starInput, val);
+                });
+            });
+
+            /**
+             * 追加自定义 Caption 文字标签到 star 控件后面
+             * @param $starInput star input 标签
+             * @param val star 值
+             */
+            function appendCaption($starInput,val){
+//                console.log("appendCaption...");
+//                console.log($starInput.attr("data-key"));
+                var $starParent = $starInput.parents(".star-rating");
+                $starParent.find(".caption").remove();
+                if(val){
+                    var text = val+"分";
+                    if(val > 0){
+                        var key = $starInput.attr("data-key");
+                        text += " - " + dataSet[key][val-1];
+                    }
+                    var $elem = $("<span class='caption'>"+text+"</span>");
+                    $elem.attr("style", "color:black");
+                    $starParent.append($elem);
+                }
+            }
+
+        </script>
+    </body>
+</html>

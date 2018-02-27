@@ -1,0 +1,51 @@
+<div class="mainBody personal" ng-controller="newsDetailCtrl">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">班级管理</a>
+	  <a><cite>新增班级</cite></a>
+	</span>
+	<form class="contain layui-form">
+		<blockquote class="layui-elem-quote">个人信息</blockquote>
+		<hr />
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">账号：</label>
+			<div class="layui-input-block">
+				<input type="text" name="title" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input" value="111">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">电话：</label>
+			<div class="layui-input-block">
+				<input type="text" name="title" required lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input" value="13814878101">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">邮箱：</label>
+			<div class="layui-input-block">
+				<input type="text" name="title" required lay-verify="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input" value="9999@qq.com">
+			</div>
+		</div>
+		<!--头像上传-->
+		<div class="layui-form-item">
+			<label class="layui-form-label" for="file">我的头像：</label>
+			<div class="layui-input-block avatar">
+				<label for="file" id="label">点击选择图片</label>
+				<input type="file" name="file" id="file" value="" accept="image/png,image/jpeg,image/jpg,image/gif" />
+				<!--<p>请上传jpg或png格式<br />200px*200px</p>-->
+			</div>
+		</div>
+
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">个人简介：</label>
+			<div class="layui-input-block">
+				<textarea name="desc" placeholder="请输入备注" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="formDemo">保存信息</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,75 @@
+<div class="mainBody users" ng-controller="users">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">用户管理</a>
+	  <a><cite>用户列表</cite></a>
+	</span>
+	<div class="contain">
+		<blockquote class="layui-elem-quote">找到<span>{{data.length}}</span>条记录
+		</blockquote>
+		<hr />
+			<form class="layui-form">
+				<!--<div class="layui-form-item">-->
+				<label class="layui-form-label">姓名：</label>
+				<div class="layui-input-block">
+					<input type="text" name="title" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+				</div>
+				<label class="layui-form-label">角色：</label>
+				<div class="layui-input-block">
+					<select name="class" lay-verify="required">
+						<option value="">--</option>
+						<option value="0">java</option>
+						<option value="1">fed</option>
+						<option value="2">fullstack</option>
+					</select>
+				</div>
+				<label class="layui-form-label">状态：</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value="">--</option>
+						<option value="0">启用</option>
+						<option value="1">禁用</option>
+					</select>
+				</div>
+				<!--</div>-->
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
+				</div>
+			</form>
+		
+		<table class="layui-table" lay-skin="line" id="table">
+			<tr>
+				<td>
+					<input type="checkbox" name="" id="" value="" ng-model="all" ng-change="allChk()" /> 全选
+				</td>
+				<td>姓名</td>
+				<td>职位</td>
+				<td>电话</td>
+				<td>邮箱</td>
+				<td>角色</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+			<tr ng-repeat="x in data track by $index">
+				<td>
+					<input type="checkbox" name="" id="" userid="{{x.id}}" ng-model="x.chk"  />
+				</td>
+				<td>{{x.name}}</td>
+				<td>{{x.position}}</td>
+				<td>{{x.tel}}</td>
+				<td>{{x.mail}}</td>
+				<td>{{x.role}}</td>
+				<td>{{x.state==1?'禁用':'启用'}}</td>
+				<td>
+					<a href="javascript:;" ng-click="preview(x.id)">预览</a>
+					<a href="javascript:;" ng-click="mod(x.id)">修改</a>
+				</td>
+			</tr>
+		</table>
+		<div class="tool">
+			<button class="layui-btn open">启用</button>
+			<button class="layui-btn layui-btn-danger">禁用</button>
+			<button class="layui-btn layui-btn-danger">重置密码</button>
+			<button class="layui-btn new" ng-click="layer_useradd()">新增用户</button>
+		</div>
+		<div id="pagination"></div>
+	</div>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>rater demo</title>
+        <meta charset="utf-8"/>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="bower_components/bootstrap-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>rater demo</h1>
+        <hr>
+        <input id="input-id" type="number"/>
+        <script type="text/javascript">
+
+            var captionArray = ["内容1","内容2","内容3","内容4","内容5"]
+
+            $(function(){
+                $("#input-id").rating({
+                    "step":1.0,
+                    "size":"sm",
+                    showClear: false,
+                    showCaption: true,
+                    starCaptions: function(val){
+                        appendCaption($("#input-id"), val);
+                    }
+                }).on('rating.change', function(event, value, caption) {
+//                    console.log("change");
+                    $(event.currentTarget).attr("currVal", value);
+                }).on('rating.hoverleave', function(event, target) {
+//                    console.log("hoverleave");
+                    var val = $("#input-id").attr("currVal")
+                    appendCaption($("#input-id"), val);
+                });
+            });
+
+            /**
+             * 追加自定义 Caption 文字标签到 star 控件后面
+             * @param $starInput star input 标签
+             * @param val star 值
+             */
+            function appendCaption($starInput,val){
+//                console.log("appendCaption...");
+                var $starParent = $starInput.parents(".star-rating");
+                $starParent.find(".caption").remove();
+                if(val){
+                    var text = val+"分";
+                    if(text>0){
+                        text += " - "+captionArray[val-1];
+                    }
+                    var $elem = $("<span class='caption'>"+text+"</span>");
+                    $elem.attr("style", "color:black");
+                    $starParent.append($elem);
+                }
+            }
+
+        </script>
+    </body>
+</html>

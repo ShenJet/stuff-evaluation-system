@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html ng-controller="root">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <link rel="Shortcut Icon" href="favicon.ico?v=17122000" >
+  <meta name="keywords" content="天智教育">
+  <meta name="description" content="天智教育利用云计算等技术手段，建立优质数字教育资源共建共享平台环境，同时满足教育用户通过网络学习空间以及各种信息终端完成教学、学习、 教研、管理、社交等方面的需求，促进信息技术与教育教学全面深度融合。实现全网融合、促进区域特色发展、解决信息孤岛，实现多级一体化建设，减少政府重复投入，构建开放生态。致力于成为全国最优秀的基础教育综合服务提供商，通过搭建高端教育云平台和核心应用，同时汇聚第三方优质资源及应用，面向教育机构、老师、学生、家长提供一站式的教学服务。坚持信息技术与教育教学的深度融合，从以“教”为中心向以“学”为中心转变，以知识传输为主向能力培养转变，从以课堂学习为主向以多种学习方式转变，全面提高教学质量，实现教育均衡和综合素质教育的改革，推动中国教育的第三次革命。">
+  <title>天智教师考评</title>
+  <link rel="stylesheet" href="lib/bootstrap-3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="lib/layui/css/layui.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css?v=171220"/>
+  <link rel="stylesheet" type="text/css" href="js/lib/angular-plugins/angular-block-ui/angular-block-ui.min.css"/>
+  <script type="text/javascript" src="lib/jq.min.js"></script>
+  <script type="text/javascript" src="lib/ng.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <!--head nav-->
+  <div class="layui-header layui-bg-blue ">
+    <div class="layui-logo">
+	    	<img src="images/icons/logo_login.png"/>
+	    	天智教育
+    </div>
+    <ul class="layui-nav layui-layout-left" >
+    		<li class="layui-nav-item"><span>苏州天智软件学院</span><span>中国IT培训专家</span></li>
+    </ul>
+    <ul class="layui-nav layui-layout-left" style="display: none;">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="images/chrome.png" class="layui-nav-img">
+          Admin
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a ui-sref="personal">基本资料</a></dd>
+          <dd><a ui-sref="pwdMod">密码修改</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="./login.html">退出</a></li>
+    </ul>
+  </div>
+  <!--left menu-->
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a href="javascript:;">考评管理</a>
+          <dl class="layui-nav-child">
+          	<dd id="unChecked"><a href="javascript:;" ui-sref-active="active" ui-sref="unChecked">未审查询</a></dd>
+          	<dd id="checked"><a href="javascript:;" ui-sref-active="active" ui-sref="checked">已审查询</a></dd>
+            <dd id="evalList"><a href="javascript:;" ui-sref-active="active" ui-sref="evalList">考评列表</a></dd>
+            <dd id="evalTempl"><a href="javascript:;" ui-sref-active="active" ui-sref="evalTempl">考评模板</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">班级管理</a>
+          <dl class="layui-nav-child">
+            <dd id="classNew"><a href="javascript:;" ui-sref-active="active" ui-sref="classNew">新增班级</a></dd>
+            <dd id="classMod"><a href="javascript:;" ui-sref-active="active" ui-sref="classMod">修改班级</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">统计分析</a>
+          <dl class="layui-nav-child">
+            <dd id="statisticByM"><a href="javascript:;" ui-sref-active="active" ui-sref="statisticByM">按月统计</a></dd>
+            <dd id="statisticByS"><a href="javascript:;" ui-sref-active="active" ui-sref="statisticByS">按季统计</a></dd>
+            <dd id="statisticByY"><a href="javascript:;" ui-sref-active="active" ui-sref="statisticByY">按年统计</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd id="users"><a href="javascript:;" ui-sref-active="active" ui-sref="users">用户列表</a></dd>
+            <dd id="userLimits"><a href="javascript:;" ui-sref-active="active" ui-sref="userLimits">角色权限</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">个人中心</a>
+          <dl class="layui-nav-child">
+            <dd id="personal"><a href="javascript:;" ui-sref-active="active" ui-sref="personal">个人信息</a></dd>
+            <dd id="pwdMod"><a href="javascript:;" ui-sref-active="active" ui-sref="pwdMod">修改密码</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- main -->
+  <div class="layui-body" ui-view></div>
+  
+<!--footer-->
+  <div class="layui-footer" style="color: #888;">
+    ©天创集团（中国）2017 版权所有<br />
+    TianZhi Education Student Feedback Sysytem | 天智教育学院反馈系统 | 2009-2020
+  </div>
+</div>
+<script src="lib/layui/layui.js"></script>
+<!--<script src="lib/layui/layui.all.js"></script>-->
+<script>
+	layui.use(['element','layer'], function(){
+	  window.element = layui.element,
+	  window.layer = layui.layer
+	});
+</script>
+<script data-main="js/main.js" src="js/lib/requirejs/require.js?v=17081300"></script>
+</body>
+</html>

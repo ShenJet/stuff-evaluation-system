@@ -1,0 +1,21 @@
+{
+  "name": "testRater",
+  "authors": [
+    "usedtolove <usedtolove@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-star-rating": "~3.5.5"
+  }
+}

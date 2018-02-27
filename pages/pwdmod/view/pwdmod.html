@@ -1,0 +1,34 @@
+<div class="mainBody pwdmodbody" ng-controller="pwdmod">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">个人中心</a>
+	  <a><cite>修改密码</cite></a>
+	</span>
+	<form class="contain layui-form">
+		<blockquote class="layui-elem-quote">修改密码</blockquote>
+		<hr />
+		<div class="layui-form-item">
+			<label class="layui-form-label">原密码：</label>
+			<div class="layui-input-block">
+				<input type="password" name="oldpwd" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">新密码：</label>
+			<div class="layui-input-block">
+				<input type="password" name="newpwd0" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">密码确认：</label>
+			<div class="layui-input-block">
+				<input type="password" name="newpwd1" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+				<button type="reset" class="layui-btn layui-btn-primary">取消</button>
+			</div>
+		</div>
+	</form>
+</div>

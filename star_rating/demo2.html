@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>rater demo</title>
+        <meta charset="utf-8"/>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="bower_components/bootstrap-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+        <style type="text/css">
+            .normal-text{
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>rater demo</h1>
+        <hr>
+        <input id="input-id" type="number"/>
+        <script type="text/javascript">
+
+            var captionArray = ["内容1","内容2","内容3","内容4","内容5"]
+
+            $(function(){
+                $("#input-id").rating({
+                    "step":1.0,
+//                    "size":"md",
+                    "size":"sm",
+                    showClear: false,
+                    showCaption: false
+                }).on('rating.change', function(event, value, caption) {
+//                    console.log("value:"+value);
+                    console.log(event.currentTarget);
+                    event.currentTarget.changedVal = captionArray[value-1];
+//                    var $parent = $(event.currentTarget).parents(".star-rating");
+//                    $parent.find(".caption").remove();
+//                    var $elem = $("<span class='caption normal-text'>"+value+"分 - "+captionArray[value-1]+"</span>");
+//                    $elem.attr("style", "color:black");
+//                    $parent.append($elem);
+                }).on('rating.hover', function(event, value, caption) {
+//                    console.log("value2:"+value);
+//                    console.log("caption2:"+captionArray[value-1]);
+
+                    var $parent = $(event.currentTarget).parents(".star-rating");
+                    $parent.find(".caption").remove();
+                    var $elem = $("<span class='caption normal-text'>"+value+"分 - "+captionArray[value-1]+"</span>");
+                    $elem.attr("style", "color:black");
+                    $parent.append($elem);
+
+                }).on('rating.hoverleave', function(event, target) {
+                    if(!event.currentTarget.changedVal){
+//                    console.log("target:"+target);
+//                        console.log("target:"+target);
+//                        this.rating('clear');
+                        $("#input-id").rating('clear');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

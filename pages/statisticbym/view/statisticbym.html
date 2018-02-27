@@ -1,0 +1,51 @@
+<div class="mainBody statisticbym" ng-controller="statisticbymCtrl">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">考评管理</a>
+	  <a><cite>按月统计</cite></a>
+	</span>
+	<div class="contain">
+		<blockquote class="layui-elem-quote">月度报表查询</blockquote>
+		<hr />
+		<div class="layui-inline">
+			<label class="layui-form-label">月份选择：</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input" id="test3" placeholder="年份-月份">
+			</div>
+			<button class="layui-btn" ng-click="query()">查询</button>
+		</div>
+	</div>
+	<p class="title" ng-bind="title"></p>
+	<div class="res" ng-repeat="x in data track by $index">
+		<table class="layui-table" lay-skin="line">
+			<thead>
+				<tr style="background-color: #75ABE9;color: #fff;font-weight: 600;">
+					<td>序号</td>
+					<td>日期</td>
+					<td>教员</td>
+					<td>班级</td>
+					<td>总份数</td>
+					<td>有效份数</td>
+					<td>平均分</td>
+				</tr>
+			</thead>
+			<tr ng-repeat="y in x.data track by $index">
+				<td>{{$index+1}}</td>
+				<td>{{y.date}}</td>
+				<td>{{x.name}}</td>
+				<td>{{y.class}}</td>
+				<td>{{y.totalnum}}</td>
+				<td>{{y.effective_num}}</td>
+				<td>{{y.aver}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="color: red;">月平均分：{{x.aver_m}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

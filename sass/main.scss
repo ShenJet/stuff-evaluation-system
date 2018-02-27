@@ -1,0 +1,476 @@
+/* scss */
+
+$color000:#000;
+$themecolor:#1E9FFF;
+$bd:#E6E6E6;
+$btn:#1c7beb;
+//login
+.loginbody {
+    header {
+        position: relative;
+        .loginbg {
+            width: 100%;
+            min-height: 88px;
+        }
+        .title {
+            width: 280px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            overflow: hidden;
+            img {
+                width: 80px;
+                margin-top: 4px;
+                display: block;
+                float: left;
+            }
+            div {
+                width: 200px;
+                height: 80px;
+                float: left;
+                color: #FFF;
+                text-align: center;
+                .a {
+                    font: 30px/50px "微软雅黑";
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+    section {
+        padding-top: 30px;
+        .fly-panel {
+            width: 310px;
+            margin: 0 auto;
+            .layui-form-item {
+                width: 100%;
+            }
+            .layui-btn {
+                display: block;
+                width: 300px;
+                background-color: $btn;
+            }
+        }
+    }
+    .layui-footer {
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+//mainpage
+.layui-btn[lay-filter] {
+    background-color: $btn;
+}
+
+.contain {
+    margin-left: 0;
+}
+
+#pagination {
+    .layui-laypage-em {
+        background-color: $themecolor;
+    }
+}
+td a{
+	color: $btn;
+}
+textarea,
+.layui-textarea {
+    resize: none;
+}
+
+.layui-header {
+    .layui-logo {
+        color: #fff;
+        img {
+            width: 50px;
+        }
+    }
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a,
+.layui-nav-tree .layui-this,
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover {
+    background-color: $color000
+}
+
+div.layui-body {
+    padding: 12px 20px;
+    background-color: #f4f8fb;
+}
+
+.mainBody {
+    height: 100%;
+    .layui-breadcrumb {
+        visibility: visible;
+    }
+    .contain {
+        min-width: 630px;
+        padding: 15px;
+        min-height: 510px;
+        background-color: #fff;
+    }
+}
+
+.classnew,
+.classmod {
+    .layui-form-label {
+        width: 110px;
+    }
+}
+
+.layui-form-item {
+    width: 600px;
+}
+
+.layui-elem-quote {
+    padding: 5px 15px;
+    background: #fff;
+    border-left: 5px solid #1E9FFF;
+}
+
+.evallist {
+    .contain {
+        //      min-width: 1100px;
+        .layui-form:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .layui-input-block {
+            margin-left: 0px;
+            float: left;
+            width: 160px;
+        }
+        .layui-form-label {
+            width: auto;
+        }
+        .layui-input-block>button {
+            margin-left: 30px;
+            background-color: $themecolor;
+        }
+        table {
+            margin-top: 30px;
+        }
+        #pagination {
+            float: right;
+        }
+    }
+}
+
+.evalltempl {
+    min-width: 912px;
+    .addnew {
+        float: right;
+        height: 30px;
+        margin-bottom: 15px;
+        line-height: 30px;
+        background-color: $themecolor;
+    }
+    #pagination {
+        float: right;
+        .layui-laypage-em {
+            background-color: $themecolor;
+        }
+    }
+    .layui-btn.btn{
+    		background-color: $btn;
+    }
+    .layui-btn.tools{
+   	 	height: 20px;
+   	 	line-height: 20px;
+    }
+}
+
+.personal {
+    .layui-form-label {
+        width: 110px;
+    }
+    .avatar>label {
+        display: block;
+        width: 160px;
+        height: 160px;
+        background: url(../images/icons/tianjiaGN.svg) no-repeat 30px 30px;
+        background-size: 100px 100px;
+        //      background-color: pink;
+        text-align: center;
+        vertical-align: bottom;
+        border: 1px solid $bd;
+        cursor: pointer;
+    }
+    #file {
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+.users {
+    .contain {
+        margin-left: 0;
+        min-width: 920px;
+        .layui-form:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .layui-input-block {
+            margin-left: 0px;
+            float: left;
+            width: 160px;
+        }
+        .layui-form-label {
+            width: auto;
+        }
+        .layui-input-block>button {
+            margin-left: 30px;
+            background-color: $themecolor;
+        }
+    }
+    .tool {
+        float: left;
+        width: 400px;
+        .open,
+        .new {
+            background-color: $themecolor;
+        }
+    }
+    #pagination {
+        float: right;
+        .layui-laypage-em {
+            background-color: $themecolor;
+        }
+    }
+}
+
+.userlimitsbody {
+    .tool {
+        float: left;
+        .layui-btn.new {
+            background-color: $btn;
+        }
+    }
+    #pagination {
+        float: right;
+    }
+    .layui-form .limitsele {
+        //  		display: inline-block!important;
+    }
+    .layui-text h2 {}
+}
+
+.layui-form .limitsele {
+    display: inline-block!important;
+}
+
+#layerform {
+    margin-top: 20px;
+}
+
+.pwdmodbody {
+    .layui-form-label {
+        width: 110px;
+    }
+}
+
+.limitssele {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    li {
+        margin-left: 30px;
+    }
+}
+
+.limitsele-Modal {
+    width: 400px;
+    //	height: 650px;
+    margin: 0 auto;
+    .modal-dialog {
+        height: 520px;
+        .modal-content {
+            width: 400px;
+            height: 100%;
+            .layui-input-block {
+                margin: 0;
+            }
+            .layui-form-item {
+                width: 400px;
+                padding-left: 95px;
+                button {
+                    display: inline-block;
+                    margin: 0 40px 20px 0;
+                }
+            }
+        }
+    }
+}
+
+.unchecked,.checked {
+    .layui-btn {
+        height: 30px;
+        line-height: 30px;
+        margin-left: 10px;
+        vertical-align: 1px;
+        background-color: $btn;
+    }
+    .searchblock {
+        float: right;
+    }
+    .layui-input {
+        width: 200px;
+        height: 30px;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .tool {
+        padding-top: 8px;
+        float: left;
+    }
+    #pagination {
+        float: right;
+        .layui-laypage-em {
+            background-color: $themecolor;
+        }
+    }
+    #detailshow {
+        position: absolute;
+        z-index: 999;
+        background: #F4F8FB;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 15px 10px 10px 15px;
+        div {
+            padding: 20px;
+            background: #fff;
+        }
+        .xiangxi {
+            margin-top: 10px;
+            .layui-btn {
+                display: block;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.uncheck-Modal {
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;
+    .modal-dialog {
+        margin: 0;
+        .modal-content {
+            width: 700px;
+            padding-bottom: 30px;
+        }
+    }
+    .layui-text>div{
+    		width: 680px;
+    		padding: 15px 30px 00px;
+    }
+    .layui-text{
+    		h3{
+    			font-weight: 600;
+    		}
+    }
+    tr>td:nth-child(2){
+    		text-align: right;
+    }
+}
+.star{
+	width: 22px;
+	height: 20px;
+	display: inline-block;
+	background: url(../images/icons/icon_score_checked.png) no-repeat;
+}
+
+.statisticbym,.statisticbys,.statisticbyy{
+	.layui-btn{
+		background-color: $btn;
+	}
+	.contain{
+		min-height: 0;
+		height: auto;
+		.layui-form-label{
+			width: 110px;
+		}
+	}
+	p.title{
+		padding: 20px 0 0;
+		text-align: center;
+		background-color: #f4f8fb;
+	}
+	.res{
+		margin-top: 20px;
+		background-color: #fff;
+	}
+}
+
+//evalltemplModal
+.modal-header{
+	padding: 6px;
+	background: $btn;
+	color: #fff;
+}
+.evalltemplModal{
+	.item{
+		margin: 8px 0;
+		input{
+			width: 350px;
+			height: 30px;
+			border: 1px solid #ccc;
+			padding-left: 10px;
+		}
+		.titleIpt{
+			background-color: #e9f7fe;
+		}
+		button{
+			width: 30px;
+			height: 30px;
+			outline: none;
+			border-radius: 50%;
+			display: inline-block;
+			margin-left: 3px;
+			font-size: 16px;
+		}
+		button.add{
+			background-color: $btn;
+			border: none;
+			color: #FFF;
+			text-align: center;
+//			line-height: 16px;
+		}
+		button.add:hover{
+			background-color: $btn;
+			opacity: 0.8;
+		}
+		button.rm{
+			box-sizing: border-box;
+			background-color: #fff;
+			border: 1px solid $btn;
+			color: $btn;
+			text-align: center;
+		}
+		button.rm:hover{
+			background-color: #eee;
+		}
+		span.name{
+			display: inline-block;width: 100px;
+			text-align: right;
+		}
+	}
+}

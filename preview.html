@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app='preview' ng-controller='preview'>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>问卷调查</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=171220" />
+		<link rel="stylesheet" type="text/css" href="lib/layui/css/layui.min.css" />
+		<!--评分组件-->
+		<link href="star_rating/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="star_rating/bower_components/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="./lib/ng.js"></script>
+		<style type="text/css">
+			.titlep {
+				padding: 8px;
+				width: 800px;
+				box-sizing: border-box;
+				margin: 0 auto;
+			}
+			
+			.rating-active {
+				cursor: pointer;
+			}
+			
+			.rating-container .rating-stars {
+				/*overflow: visible;*/
+			}
+			
+			.rating-container {
+				overflow: visible;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #f4f8fb;">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header layui-bg-blue ">
+				<div style="width: 888px;height:100%;margin: 0 auto;overflow: hidden;position: relative;">
+					<div class="layui-logo">
+						<img src="images/icons/logo_login.png"> <span style="color: #fff;">天智教育</span>
+					</div>
+					<ul class="layui-nav layui-layout-left">
+						<li class="layui-nav-item"><span>苏州天智软件学院</span><span>中国IT培训专家</span></li>
+						<span class="layui-nav-bar" style="left: 123.836px; top: 55px; width: 0px; opacity: 0;"></span>
+					</ul>
+				</div>
+			</div>
+			<!--主体内容-->
+			<p class="titlep">欢迎进入天智教育在线考评系统！你所在的班级是：；你所要评价的老师是：</p>
+			<div class="modal-body evalltemplModal" style="width: 800px;margin: 0 auto;background-color: #fff;box-sizing: border-box;padding: 30px;">
+				<form class="layui-form" action="">
+				<div ng-repeat="x in items.content.leimu track by $index" ng-init="upindex=$index">
+					<div class="item">
+						<!--<input type="text" class="titleIpt" ng-model="x.name" />-->
+						<p ng-bind="x.name" style="background: #1c7beb;height: 30px;color: #fff;line-height: 30px;padding-left: 8px;"></p>
+					</div>
+					<table class="layui-table" lay-even lay-skin="nob">
+						<tr ng-repeat="y in x.items track by $index">
+							<td><span ng-bind="y"></span></td>
+							<td style="width: 240px;">
+								<input id="input-{{upindex}}-{{$index}}" name="rate-{{upindex}}-{{$index}}" type="number" class="rating" min=0 max=5 step=1.0 value="5" data-size="mds" lay-verify="required" /></td>
+						</tr>
+					</table>
+				</div>
+				<div ng-repeat="x in items.content.suggestion track by $index">
+					<div class="item">
+						<!--<input type="text" class="titleIpt" ng-model="x" />-->
+						<p ng-bind="x" style="background: #1c7beb;height: 30px;color: #fff;line-height: 30px;padding-left: 8px;"></p>
+						<textarea name="suggestion{{$index}}" class="layui-textarea" lay-verify="required" style="width: 100%;height: 100px;margin: 10px auto 10px;box-sizing: border-box;resize: none;"></textarea>
+					</div>
+				</div>
+				<div style="text-align: right;">
+					<button class="layui-btn" style="background-color: #1c7beb;width: 100px;" lay-submit lay-filter="sub">提 交</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src='lib/layui/layui.js'></script>
+	<script type="text/javascript">
+		var app = angular.module('preview', [])
+			.controller('preview', function($scope) {
+				function getCookie(name) {
+					var arr = document.cookie.split("; ");
+					for(var i = 0; i < arr.length; i++) {
+						if(name === arr[i].split("=")[0]) {
+							return arr[i].split("=")[1]
+						}
+					}
+					return false
+				}
+				$scope.items = JSON.parse(getCookie("data"))
+				console.log($scope.items)
+				layui.use(['element', 'layer', 'form'], function() {
+					window.element = layui.element,
+						window.layer = layui.layer,
+						window.form = layui.form;
+					window.form.on('submit(sub)', function(data) {
+						layer.msg(JSON.stringify(data.field));
+						return false;
+					});
+				});
+
+			})
+	</script>
+	<script src="star_rating/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="star_rating/bower_components/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
+
+</html>

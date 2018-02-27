@@ -1,0 +1,1 @@
+define([],function(){return function(r){var e={resolver:["$q","$rootScope",function(e,n){var o=e.defer();return require(r,function(){n.$apply(function(){o.resolve()})}),o.promise}]};return e}});

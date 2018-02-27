@@ -1,0 +1,111 @@
+<div class="mainBody checked" ng-controller="checkedCtrl">
+	<span class="layui-breadcrumb" lay-separator="-">
+	  <a href="">考评管理</a>
+	  <a><cite>已审查询</cite></a>
+	</span>
+	<div class="contain">
+		<blockquote class="layui-elem-quote">找到<span>{{data.length}}</span>条记录
+			<div id="" class="searchblock">
+				<input class="layui-input" type="search" name="" required="" placeholder="输入关键字…" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh-CN"><button class="layui-btn">搜索</button>
+			</div>
+		</blockquote>
+		<hr />
+		<table class="layui-table" lay-skin="line" id="table">
+			<tr>
+				<td>班级</td>
+				<td>类型</td>
+				<td>调查教员</td>
+				<td>总份数</td>
+				<td>有效份数</td>
+				<td>平均分数</td>
+				<td>调查日期</td>
+				<td>操作</td>
+			</tr>
+			<tr ng-repeat="x in data track by $index">
+				<td>{{x.class}}</td>
+				<td>{{x.type}}</td>
+				<td>{{x.name}}</td>
+				<td>{{x.count}}</td>
+				<td>{{x.count_usual}}</td>
+				<td>{{x.aver}}</td>
+				<td>{{x.date}}</td>
+				<td>
+					<a href="javascript:;" ng-click="detail(x)">明细</a>
+				</td>
+			</tr>
+		</table>
+		<div class="tool">
+			<button class="layui-btn export" ng-click="export()">导出</button>
+		</div>
+		<div id="pagination"></div>
+		
+			
+		<!--已审明细页面-->
+		<div ng-show="detailshow" id="detailshow">
+			<span class="layui-breadcrumb" lay-separator="-">
+			  <a href="javascript:;" ng-click="detailhide()"><<返回已审查询</a>
+			  <!--<a ui-sref="personal"><cite>未审查询</cite></a>-->
+			</span>
+			<div class="gaiyao">
+				<blockquote class="layui-elem-quote">概要信息</blockquote>
+				<table class="layui-table" lay-skin="line">
+					<tr>
+						<td>
+							<span>教员：</span><span>ABC</span>
+						</td>
+						<td>
+							<span>班级：</span><span>JSD1708</span>
+						</td>
+						<td>
+							<span>调查开始时间：</span><span>2017-08-09</span>
+						</td>
+						<td>
+							<span>调查结束时间：</span><span>2017-08-10</span>
+						</td>
+					</tr>
+					<tr style="margin-top: 10px;">
+						<td>
+							<span>状态：</span><span style="color: red;">已审</span>
+						</td>
+						<td>
+							<span>总份数：</span><span>8</span>
+						</td>
+						<td>
+							<span>有效份数：</span><span>5</span>
+						</td>
+						<td>
+							<span>平均分：</span><span>4.8</span>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="xiangxi">
+				<blockquote class="layui-elem-quote">学员反馈</blockquote>
+				<table class="layui-table" lay-skin="line">
+					<tr>
+						<td>序号</td>
+						<td>班级管理</td>
+						<td>讲师管理</td>
+						<td>是否无效</td>
+						<td>评分信息</td>
+						<td>操作</td>
+					</tr>
+					<tr ng-repeat="x in details track by $index">
+						<td>{{x.id}}</td>
+						<td>{{x.classeval}}</td>
+						<td>{{x.teachereval}}</td>
+						<td><input type="checkbox" ng-model="x.useless" />{{x.useless?'无效':'有效'}}</td>
+						<td ng-init="color=x.effective?'red':'blue'">
+							<span style="display: inline-block;width: 100px;height: 8px;position: relative;">
+								<span style="display: inline-block;width: {{x.score*100/5}}%;background: {{!x.useless?'#75ABE9':'#FA6869'}};height: 8px;position: absolute;"></span>
+							</span>
+							平均分 {{x.score.toFixed(1)}}
+						</td>
+						<td>	<a href="javascript:;" ng-click="detailModal(x)">查看</a></td>
+					</tr>
+					
+				</table>
+			</div>
+		</div>
+	</div>

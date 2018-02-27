@@ -21,7 +21,7 @@ require.config({
 		'ui-bootstrap':'../lib/angular-plugins/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.1.min',
 		'angular-sanitize':'../lib/angular-plugins/angular-sanitize.min'
 	},
-
+	waitSeconds: 0 ,
 	shim : {
 		// 表明该模块依赖angular
 		'angularAMD' : [ 'angular'],
